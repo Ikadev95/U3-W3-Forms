@@ -1,1 +1,65 @@
-<p>registration works!</p>
+<div class="container pt-3">
+
+  <form [formGroup]="form" >
+
+    <div class="form-group">
+      <label for="name">Nome *</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" formControlName = "name">
+      <span *ngIf="isInValidTouched('name')" class="text-danger">Devi inserire il nome</span>
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Cognome *</label>
+      <input type="text" class="form-control" id="surname" placeholder="Enter Surname" formControlName = "surname">
+      <span *ngIf="isInValidTouched('surname')" class="text-danger">Devi inserire il cognome</span>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password *</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" formControlName = "password">
+      <span *ngIf="isInValidTouched('password')" class="text-danger">Devi inserire la password di min 5 caratteri</span>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmpass">Conferma Password *</label>
+      <input type="password" class="form-control" id="confirmpass" placeholder="Confirm Password" formControlName = "confirmpass">
+      <span *ngIf="isInValidTouched('confirmpass')" class="text-danger">Devi confermare la password</span>
+      <span *ngIf="passwordValidator(form)" class="text-danger">le password non corrispondono</span>
+
+    </div>
+
+   <label class="my-1 mr-2" for="genere">Genere</label>
+    <select class="custom-select my-1 mr-sm-2" id="genere" formControlName="genere">
+      <option selected>Non voglio dichiararlo</option>
+      <option value="1">Uomo</option>
+      <option option value="2">Donna</option>
+    </select>
+
+    <div class="form-group">
+      <label for="image">Immagine del profilo</label>
+      <input type="file" class="form-control-file" id="image" formControlName="image">
+    </div>
+
+    <div class="form-group">
+      <label for="bio">Biografia</label>
+      <textarea class="form-control" id="bio" rows="3" formControlName="bio"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username *</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter UserName" formControlName = "username">
+      <span *ngIf="isInValidTouched('username')" class="text-danger">Devi inserire lo username</span>
+    </div>
+
+
+    <div *ngIf="formvalid" class="alert alert-danger" role="alert">
+      form non valido, inserisci tutti i campi
+    </div>
+
+    <button (click)="send()" class="btn btn-primary">invia</button>
+
+
+
+  </form>
+
+</div>
