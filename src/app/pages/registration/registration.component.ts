@@ -23,13 +23,13 @@ export class RegistrationComponent implements OnInit{
       image: this.fb.control(''),
       bio: this.fb.control(''),
       username: this.fb.control('', [Validators.required])
-    },); // Aggiunto il validatore qui
+    },);
   }
 
 
   send(){
     if(this.form.valid){
-      console.log(this.form.value);}//mostra i valori inseriti}
+      console.log(this.form.value);}//mostra i valori inseriti
       else {
         this.formvalid = true
         console.log("not valid")
