@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormSvcService } from '../../services/form-svc.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,7 @@ export class RegistrationComponent implements OnInit{
   form!:FormGroup
   formvalid = false
 
-  constructor(private fb:FormBuilder){} // permette di creare form reattivi
+  constructor(private fb:FormBuilder, private svc : FormSvcService){} // permette di creare form reattivi
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -29,7 +30,10 @@ export class RegistrationComponent implements OnInit{
 
   send(){
     if(this.form.valid){
-      console.log(this.form.value);}//mostra i valori inseriti
+      console.log(this.form.value);
+      this.svc.logs.push(this.form.value)
+    }//mostra i valori inseriti
+
       else {
         this.formvalid = true
         console.log("not valid")
